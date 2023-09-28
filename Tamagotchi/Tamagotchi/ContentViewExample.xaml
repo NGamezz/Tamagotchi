@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tamagotchi.ContentViewExample">
+
+    <VerticalStackLayout>
+        <HorizontalStackLayout>
+
+            <Button
+                Text="Main Page."
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Pressed="MainPage"
+                />
+            <Button
+            Text="Food Page."
+            HorizontalOptions="Center"
+            Pressed="NextPage"
+            VerticalOptions="End"
+            />
+            <Button
+            Text="Sleep Page."
+            HorizontalOptions="Center"
+            Pressed="SleepPage"
+            VerticalOptions="End"
+            />
+            <Button
+            Text="Status Page."
+            HorizontalOptions="Center"
+            Pressed="StatusPage"
+            VerticalOptions="End"
+            />
+            <Button
+            Text="Playtime Page."
+            HorizontalOptions="Center"
+            Pressed="PlayTimePage"
+            VerticalOptions="End"
+            />
+
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+
+
+</ContentView>
