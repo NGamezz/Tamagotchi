@@ -22,7 +22,7 @@ public partial class FoodPage : ContentPage, INotifyPropertyChanged
         OnPropertyChanged(nameof(HungerText));
     }
 
-    private string HungerText => gameManager.MyCreature.Hunger switch
+    public string HungerText => gameManager.MyCreature.Hunger switch
     {
         <= 0 => "Not Hungry",
         < .25f => "A little Hungry",

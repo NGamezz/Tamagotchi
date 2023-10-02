@@ -4,9 +4,7 @@ namespace Tamagotchi
 {
     public class GameManager
     {
-        public Creature MyCreature { get; set; } = new Creature()
-        {
-        };
+        public Creature MyCreature { get; set; } = new Creature();
 
         public System.Timers.Timer timer = new System.Timers.Timer()
         {
@@ -23,7 +21,7 @@ namespace Tamagotchi
         public void UpdateCreature(Creature creatureToUpdate)
         {
             var dataStore = DependencyService.Get<IDataStore<Creature>>();
-            dataStore.UpdateItem(creatureToUpdate, creatureToUpdate.Id.ToString());
+            dataStore.UpdateItem(creatureToUpdate, creatureToUpdate.StorageKey);
         }
 
         public bool FirstRun { get; private set; } = true;
@@ -72,20 +70,16 @@ namespace Tamagotchi
             }
             else
             {
-                MyCreature = null;
-            }
-
-            if (MyCreature == null)
-            {
                 MyCreature = new Creature()
                 {
                     Name = creatureName,
                     Loneliness = 1.0f,
                     Boredom = 1.0f,
                     Tired = 1.0f,
-                    Stimulated = 1.0f,
+                    Stimulated = .0f,
                     Hunger = 1.0f,
                     Thirst = 1.0f,
+                    StorageKey = creatureName
                 };
 
                 await dataStore.CreateItem(MyCreature, creatureName);
