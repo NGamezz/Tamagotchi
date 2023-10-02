@@ -8,7 +8,7 @@ namespace Tamagotchi
         readonly HttpClient client = new();
         private readonly string url = "https://tamagotchi.hku.nl/api/Creatures";
 
-        public async Task<bool> CreateItem(Creature item)
+        public async Task<bool> CreateItem(Creature item, string storageKey)
         {
             var result = await client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json"));
 
@@ -52,12 +52,12 @@ namespace Tamagotchi
             }
         }
 
-        public bool UpdateItem(Creature item)
+        public bool UpdateItem(Creature item, string id)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteItem(Creature item)
+        public bool DeleteItem(Creature item, string id)
         {
             throw new NotImplementedException();
         }

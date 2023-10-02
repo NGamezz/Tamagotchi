@@ -4,13 +4,39 @@
              xmlns:Tamagotchi="clr-namespace:Tamagotchi"
              x:Class="Tamagotchi.PlayTimePage"
              Title="PlayTimePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
 
-        <Tamagotchi:ContentViewExample MyAmazing="Change the value of the property." HorizontalOptions="Center" VerticalOptions="End"/>
+    <VerticalStackLayout Spacing="40"
+                         VerticalOptions="Center"
+                         Padding="20.0">
+        <Label
+            FontSize="Header"
+            Text="PlayTime Page"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            />
+
+        <Label 
+            FontSize="Body"
+            Text="You can play with your Tamagotchi here."
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            />
+
+        <Label
+            Text="{Binding BoredomText, Mode=OneWay}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            />
+
+        <Button 
+            x:Name="Button"
+            Text="Play with your Creature."
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Pressed="PlayWithTamagotchi"
+            />
+
+        <Tamagotchi:ContentViewExample MyAmazing="agdywgdyogaisd" VerticalOptions="End" HorizontalOptions="CenterAndExpand"/>
 
     </VerticalStackLayout>
 </ContentPage>

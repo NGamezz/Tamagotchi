@@ -33,13 +33,13 @@ public partial class ContentViewExample : ContentView
         Navigation.PushAsync(new SleepPage());
     }
 
-    public void StatusPage(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new StatusPage());
-    }
-
     public void PlayTimePage(object sender, EventArgs e)
     {
         Navigation.PushAsync(new PlayTimePage());
+    }
+
+    public void HydrationPage(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new HydrationPage());
     }
 }

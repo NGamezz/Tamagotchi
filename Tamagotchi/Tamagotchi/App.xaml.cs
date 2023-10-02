@@ -5,7 +5,9 @@ public partial class App : Application
     public App()
     {
         //When implementing the online service change CreatureDataStore to RemoteCreatureDataStore
-        DependencyService.RegisterSingleton<IDataStore<Creature>>(new RemoteDataStore());
+        DependencyService.RegisterSingleton<IDataStore<Creature>>(new CreatureDataStore());
+
+        DependencyService.RegisterSingleton(new GameManager());
 
         InitializeComponent();
 

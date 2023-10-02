@@ -4,16 +4,37 @@
              xmlns:Tamagotchi="clr-namespace:Tamagotchi"
              x:Class="Tamagotchi.FoodPage"
              Title="FoodPage">
-    <VerticalStackLayout>
+
+    <VerticalStackLayout Spacing="40"
+                         VerticalOptions="Center"
+                         Padding="20.0">
+        <Label
+            FontSize="Header"
+            Text="Food Page"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            />
+
         <Label 
-            Text="The Foodpage Will Soon be Implemented, you'll be able to provide your pet with food and water here."
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            FontSize="Body"
+            Text="You can feed your Tamagotchi here."
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            />
+
+        <Label
+            x:Name="HungerCountLabel"
+            Text="{Binding HungerText, Mode=OneWay}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            />
 
         <Button 
+            x:Name="Button"
             Text="Feed your Creature."
             VerticalOptions="Center"
             HorizontalOptions="Center"
+            Pressed="Feed"
             />
 
         <Tamagotchi:ContentViewExample MyAmazing="agdywgdyogaisd" VerticalOptions="End" HorizontalOptions="CenterAndExpand"/>

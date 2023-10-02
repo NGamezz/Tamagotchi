@@ -2,38 +2,38 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Tamagotchi="clr-namespace:Tamagotchi"
-             x:Class="Tamagotchi.SleepPage"
-             Title="SleepPage">
+             x:Class="Tamagotchi.HydrationPage"
+             Title="HydrationPage">
 
     <VerticalStackLayout Spacing="40"
                          VerticalOptions="Center"
                          Padding="20.0">
         <Label
             FontSize="Header"
-            Text="Sleep Page"
+            Text="Hydration Page"
             HorizontalOptions="Center"
             VerticalOptions="Start"
             />
 
         <Label 
             FontSize="Body"
-            Text="Your Tamagotchi can rest here."
+            Text="You can make sure your Tamagotchi hydrates here."
             HorizontalOptions="Center"
             VerticalOptions="Start"
             />
 
         <Label
-            Text="{Binding TiredText, Mode=OneWay}"
+            Text="{Binding ThirstText, Mode=OneWay}"
             VerticalOptions="Center"
             HorizontalOptions="Center"
             />
 
         <Button 
             x:Name="Button"
-            Text="Send your Creature to bed."
+            Text="Hydrate your Creature."
             VerticalOptions="Center"
             HorizontalOptions="Center"
-            Pressed="Sleep"
+            Pressed="Hydrate"
             />
 
         <Tamagotchi:ContentViewExample MyAmazing="agdywgdyogaisd" VerticalOptions="End" HorizontalOptions="CenterAndExpand"/>

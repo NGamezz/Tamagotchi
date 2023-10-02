@@ -2,57 +2,60 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:Tamagotchi="clr-namespace:Tamagotchi"
+             x:Name="mainPage"
              x:Class="Tamagotchi.MainPage">
     <!-- Add NameSpace -->
 
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+            Padding="25,0"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+            <Label 
+                Text="Status Page."
+                FontSize="Header"
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                />
 
-            <!--Interesting way to comment things.-->
+            <Entry 
+                x:Name="nameInputField"
+                Placeholder="Enter Creature Name To Make or Recover a creature."
+                Completed="NameInputField_Completed"
+                />
 
             <Label
-                Text="{Binding MyCreature.Name, Mode=OneWay}"
-                SemanticProperties.HeadingLevel="Level2"
-                FontSize="32"
+                Text="You can view your Tamagotchi's status here."
+                FontSize="Body"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                />
+
+            <Label
+                Text="{Binding  HungerText,Mode=OneWay}"
                 HorizontalOptions="Center" />
 
             <Label
-                Text="Welcome to App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
+                Text="{Binding  ThirstText,Mode=OneWay}"
                 HorizontalOptions="Center" />
 
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-
-                <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                BackgroundColor="Black"
+            <Label
+                Text="{Binding  BoredomText,Mode=OneWay}"
                 HorizontalOptions="Center" />
 
-                <Button
-                x:Name="RandomButton"
-                Text="Next Page"
-                FontSize="Large"
-                Clicked="NextPage"
-                HorizontalOptions="Center" 
-                BackgroundColor="Black"
-                    Margin="10, 0, 0, 0"
-                TextColor="AliceBlue" />
+            <Label
+                Text="{Binding  TiredText,Mode=OneWay}"
+                HorizontalOptions="Center" />
 
-            </HorizontalStackLayout>
+            <Label
+                Text="{Binding  LonelinessText,Mode=OneWay}"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="{Binding  StimulatedText,Mode=OneWay}"
+                HorizontalOptions="Center" />
 
             <Tamagotchi:ContentViewExample MyAmazing="Change the value of the property." HorizontalOptions="Center" VerticalOptions="End"/>
 

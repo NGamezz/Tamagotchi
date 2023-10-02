@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Maui.Graphics.Text;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,41 +11,53 @@ namespace Tamagotchi
 {
     public class CreatureDataStore : IDataStore<Creature>
     {
-        private string storageKey = string.Empty;
-
-        public CreatureDataStore(string _storageKey)
+        public CreatureDataStore()
         {
-            storageKey = _storageKey;
         }
 
-        public Task<bool> CreateItem(Creature item)
+        public Task<bool> CreateItem(Creature item, string id)
         {
-            if (Preferences.ContainsKey(storageKey))
+            if (Preferences.ContainsKey(id))
             {
                 return Task.FromResult(false);
             }
 
             string creatureString = JsonConvert.SerializeObject(item);
-            Preferences.Set(storageKey, creatureString);
+            Preferences.Set(id, creatureString);
+            item.StorageKey = id;
 
-            return Task.FromResult(Preferences.ContainsKey(storageKey));
+            return Task.FromResult(Preferences.ContainsKey(id));
         }
 
         public Task<Creature> ReadItem(string id)
         {
-            string itemtext = Preferences.Get(id.ToString(), "");
+            string itemtext = Preferences.Get(id, "");
 
             Creature creature = JsonConvert.DeserializeObject<Creature>(itemtext);
             return Task.FromResult(creature);
         }
 
-        public bool UpdateItem(Creature item)
+        public bool UpdateItem(Creature item, string id)
         {
+            if (Preferences.ContainsKey(id))
+            {
+                Preferences.Remove(id);
+                string itemText = JsonConvert.SerializeObject(item);
+                Preferences.Set(id, itemText);
+                return true;
+            }
+
             return false;
         }
 
-        public bool DeleteItem(Creature item)
+        public bool DeleteItem(Creature item, string id)
         {
+            if (Preferences.ContainsKey(id))
+            {
+                Preferences.Remove(id);
+                return true;
+            }
+
             return false;
         }
     }
