@@ -3,38 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Tamagotchi.ContentViewExample">
 
-        <FlexLayout Wrap="Wrap">
+    <FlexLayout Wrap="Wrap">
 
-            <Button
+        <Button
+                x:Name="MainPageButton"
             Text="Main Page."
             VerticalOptions="End"
             Pressed="MainPage"
             />
 
-            <Button
+        <Button
+                x:Name="FoodPageButton"
             Text="Food Page."
-            Pressed="NextPage"
+            Pressed="FoodPage"
             VerticalOptions="End"
             />
 
-            <Button
+        <Button
+                x:Name="SleepPageButton"
             Text="Sleep Page."
             Pressed="SleepPage"
             VerticalOptions="End"
             />
 
-            <Button
+        <Button
+                x:Name="PlayTimePageButton"
             Text="Playtime Page."
             Pressed="PlayTimePage"
             VerticalOptions="End"
             />
 
-            <Button
+        <Button
+                x:Name="HydrationPageButton"
             Text="Hydration Page."
             Pressed="HydrationPage"
             VerticalOptions="End"
             />
 
-        </FlexLayout>
+    </FlexLayout>
 
 </ContentView>

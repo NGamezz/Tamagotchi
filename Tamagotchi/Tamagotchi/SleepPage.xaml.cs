@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Timers;
 
@@ -16,7 +15,21 @@ public partial class SleepPage : ContentPage, INotifyPropertyChanged
         BindingContext = this;
         InitializeComponent();
         OnPropertyChanged(nameof(TiredText));
+        CheckForSleepButton(gameManager.MyCreature.IsAsleep);
         gameManager.timer.Elapsed += OnTimerElapsed;
+    }
+
+    private void CheckForSleepButton(bool isAsleep)
+    {
+        if (isAsleep)
+        {
+            Button.Text = "Your Tamagotchi is currently Sleeping.";
+        }
+        else
+        {
+            Button.Text = "Send your Tamagotchi to bed.";
+        }
+        SemanticScreenReader.Announce(Button.Text);
     }
 
     private void OnTimerElapsed(Object sender, ElapsedEventArgs e)
@@ -48,16 +61,8 @@ public partial class SleepPage : ContentPage, INotifyPropertyChanged
         bool isAsleep = gameManager.MyCreature.IsAsleep;
         gameManager.MyCreature.IsAsleep = !isAsleep;
 
-        if (!isAsleep)
-        {
-            Button.Text = "Your Tamagotchi is currently Sleeping.";
-        }
-        else
-        {
-            Button.Text = "Send your Tamagotchi to bed.";
-        }
+        CheckForSleepButton(gameManager.MyCreature.IsAsleep);
 
-        SemanticScreenReader.Announce(Button.Text);
         gameManager.UpdateCreature(gameManager.MyCreature);
         OnPropertyChanged(nameof(TiredText));
     }

@@ -18,7 +18,7 @@ namespace Tamagotchi
 
                 var resultingCreature = JsonConvert.DeserializeObject<Creature>(responseString);
 
-                Preferences.Set("CreatureId", resultingCreature.Id);
+                Preferences.Set(storageKey, resultingCreature.Id.ToString());
 
                 return true;
             }
@@ -30,7 +30,7 @@ namespace Tamagotchi
 
         public async Task<Creature> ReadItem(string id)
         {
-            var response = await client.GetAsync($"{url}{id}");
+            var response = await client.GetAsync($"{url}/{id}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -54,12 +54,25 @@ namespace Tamagotchi
 
         public bool UpdateItem(Creature item, string id)
         {
-            throw new NotImplementedException();
+            if (Preferences.ContainsKey(id))
+            {
+                string itemText = JsonConvert.SerializeObject(item);
+                client.PutAsync($"{url}/{item.Id}", new StringContent(itemText, Encoding.UTF8, "application/json"));
+                return true;
+            }
+
+            return false;
         }
 
         public bool DeleteItem(Creature item, string id)
         {
-            throw new NotImplementedException();
+            if (Preferences.ContainsKey(id))
+            {
+                client.DeleteAsync($"{url}/{item.Id}");
+                return true;
+            }
+
+            return false;
         }
     }
 }

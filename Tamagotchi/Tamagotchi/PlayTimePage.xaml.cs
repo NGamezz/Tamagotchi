@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Timers;
 
@@ -33,8 +32,6 @@ public partial class PlayTimePage : ContentPage, INotifyPropertyChanged
         >= 1.0f => "Immensely Bored",
         _ => throw new ArgumentException("Not Possible", gameManager.MyCreature.Hunger.ToString())
     };
-
-    //Add name selection for the creature.
 
     protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {

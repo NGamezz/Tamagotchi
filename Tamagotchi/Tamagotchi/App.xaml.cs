@@ -5,12 +5,11 @@ public partial class App : Application
     public App()
     {
         //When implementing the online service change CreatureDataStore to RemoteCreatureDataStore
-        DependencyService.RegisterSingleton<IDataStore<Creature>>(new CreatureDataStore());
+        DependencyService.RegisterSingleton<IDataStore<Creature>>(new RemoteDataStore());
 
         DependencyService.RegisterSingleton(new GameManager());
 
         InitializeComponent();
-
         MainPage = new AppShell();
     }
 
@@ -31,6 +30,8 @@ public partial class App : Application
         var sleepTime = Preferences.Get("SleepTime", DateTime.Now);
 
         var elapsed = wakeTime - sleepTime;
-        var secondsPassed = elapsed.TotalSeconds;
+
+        GameManager gameManager = DependencyService.Get<GameManager>();
+        gameManager.TimeElapsedSinceLastRun = (float)elapsed.TotalMilliseconds;
     }
 }

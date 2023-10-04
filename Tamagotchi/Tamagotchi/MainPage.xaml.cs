@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Timers;
 
@@ -95,14 +94,19 @@ public partial class MainPage : ContentPage, INotifyPropertyChanged
         if (gameManager.FirstRun == false)
         {
             nameInputField.IsReadOnly = true;
-            nameInputField.Text = gameManager.MyCreature.Name;
+            nameInputField.Text = gameManager.MyCreature?.Name;
         }
     }
 
     private void NameInputField_Completed(object sender, EventArgs e)
     {
-        gameManager.Setup(nameInputField.Text);
+        gameManager.Setup(nameInputField.Text, SetCreatureName);
         nameInputField.IsReadOnly = true;
+    }
+
+    private void SetCreatureName()
+    {
+        nameInputField.Text = gameManager.MyCreature?.Name;
     }
 
     private void UpdateAllCreatureProperties(Object sender, ElapsedEventArgs e)

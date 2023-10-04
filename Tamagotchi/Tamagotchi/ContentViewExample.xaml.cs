@@ -18,28 +18,43 @@ public partial class ContentViewExample : ContentView
         InitializeComponent();
     }
 
-    private void NextPage(object sender, EventArgs e)
+    private async void FoodPage(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new FoodPage());
+        await FoodPageButton.RelScaleTo(1.5f);
+        await FoodPageButton.ScaleTo(1);
+
+        await Navigation.PushAsync(new FoodPage());
     }
 
-    private void MainPage(object sender, EventArgs e)
+    private async void MainPage(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new MainPage());
+        await MainPageButton.RelScaleTo(1.5f);
+        await MainPageButton.ScaleTo(1);
+
+        await Navigation.PushAsync(new MainPage());
     }
 
-    public void SleepPage(object sender, EventArgs e)
+    public async void SleepPage(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SleepPage());
+        await SleepPageButton.RelScaleTo(1.5f);
+        await SleepPageButton.ScaleTo(1);
+
+        await Navigation.PushAsync(new SleepPage());
     }
 
-    public void PlayTimePage(object sender, EventArgs e)
+    public async void PlayTimePage(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new PlayTimePage());
+        await PlayTimePageButton.RelScaleTo(1.5f);
+        await PlayTimePageButton.ScaleTo(1);
+
+        await Navigation.PushAsync(new PlayTimePage());
     }
 
-    public void HydrationPage(object sender, EventArgs e)
+    public async void HydrationPage(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new HydrationPage());
+        await HydrationPageButton.RelScaleTo(1.5f);
+        await HydrationPageButton.ScaleTo(1);
+
+        await Navigation.PushAsync(new HydrationPage());
     }
 }
