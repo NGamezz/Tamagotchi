@@ -17,6 +17,9 @@ public partial class App : Application
     {
         base.OnSleep();
 
+        GameManager gameManager = DependencyService.Get<GameManager>();
+        gameManager.UpdateCreature(gameManager.MyCreature);
+
         var sleepTime = DateTime.Now;
         Preferences.Set("SleepTime", sleepTime);
     }

@@ -8,9 +8,9 @@ namespace Tamagotchi
 
         public float TimeElapsedSinceLastRun { get; set; }
 
-        public System.Timers.Timer timer = new System.Timers.Timer()
+        public System.Timers.Timer timer = new()
         {
-            Interval = 5000.0f,
+            Interval = 10000.0f,
             AutoReset = true
         };
 
@@ -26,7 +26,7 @@ namespace Tamagotchi
             dataStore.UpdateItem(creatureToUpdate, creatureToUpdate.StorageKey);
         }
 
-        private void UpdateStatsBasedOnTime(float timePassed)
+        private void UpdateStatsBasedOnTimePassed(float timePassed)
         {
             float timeMultiplier = timePassed / (float)timer.Interval;
 
@@ -54,6 +54,8 @@ namespace Tamagotchi
             {
                 MyCreature.Tired += 0.01f * timeMultiplier;
             }
+
+            UpdateCreature(MyCreature);
         }
 
         public bool FirstRun { get; private set; } = true;
@@ -86,6 +88,8 @@ namespace Tamagotchi
             {
                 MyCreature.Tired += 0.01f;
             }
+
+            UpdateCreature(MyCreature);
         }
         #endregion
 
@@ -118,11 +122,10 @@ namespace Tamagotchi
                 await dataStore.CreateItem(MyCreature, creatureName);
             }
 
-            UpdateStatsBasedOnTime(TimeElapsedSinceLastRun);
+            UpdateStatsBasedOnTimePassed(TimeElapsedSinceLastRun);
             TimeElapsedSinceLastRun = 0.0f;
             FirstRun = false;
             action();
         }
     }
-
 }

@@ -100,7 +100,7 @@ public partial class MainPage : ContentPage, INotifyPropertyChanged
 
     private void NameInputField_Completed(object sender, EventArgs e)
     {
-        gameManager.Setup(nameInputField.Text, SetCreatureName);
+        gameManager.Setup(nameInputField.Text.ToLower(), SetCreatureName);
         nameInputField.IsReadOnly = true;
     }
 

@@ -8,6 +8,7 @@
     <VerticalStackLayout Spacing="40"
                          VerticalOptions="Center"
                          Padding="20.0">
+
         <Label
             FontSize="Header"
             Text="PlayTime Page"
